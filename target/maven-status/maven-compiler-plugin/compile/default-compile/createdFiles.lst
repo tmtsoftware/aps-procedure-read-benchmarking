@@ -1,0 +1,10 @@
+com/example/App.class
+com/example/jooq/generated/tables/Proceduresummaryview.class
+com/example/jooq/generated/tables/records/ProceduresummaryviewRecord.class
+com/example/jooq/generated/Keys.class
+com/example/jooq/generated/Tables.class
+com/example/jooq/generated/tables/Archiveprocedureview.class
+com/example/jooq/generated/DefaultCatalog.class
+com/example/ArchiveProcedureData.class
+com/example/jooq/generated/tables/records/ArchiveprocedureviewRecord.class
+com/example/jooq/generated/Public.class

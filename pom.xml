@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example</groupId>
+  <artifactId>jooq-example</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>jooq-example</name>
+  <url>http://maven.apache.org</url>
+  <!-- properties section -->
+  <properties>
+    <database.url>jdbc:postgresql://localhost:5432/peas</database.url>
+    <database.username>postgres</database.username>
+    <database.password>postgres</database.password>
+  </properties>
+  <!-- dependencies -->
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- jOOQ Dependency -->
+    <dependency>
+        <groupId>org.jooq</groupId>
+        <artifactId>jooq</artifactId>
+        <version>3.16.15</version> <!-- Use the latest version -->
+    </dependency>
+
+    <!-- PostgreSQL JDBC Driver -->
+    <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>42.2.5</version> <!-- Use the latest version -->
+    </dependency>
+    
+    <!-- Maven Plugin for jOOQ Code Generation -->
+    <dependency>
+        <groupId>org.jooq</groupId>
+        <artifactId>jooq-codegen-maven</artifactId>
+        <version>3.16.0</version> <!-- Use the latest version -->
+        <scope>compile</scope>
+    </dependency>
+  </dependencies>
+
+
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq-codegen-maven</artifactId>
+            <version>3.16.15</version>  <!-- Make sure this version matches your jOOQ dependency -->
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>generate</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <jdbc>
+                    <driver>org.postgresql.Driver</driver>
+                    <url>jdbc:postgresql://localhost:5432/peas</url>  <!-- Update this! -->
+                    <user>postgres</user>  <!-- Update this! -->
+                    <password>postgres</password>  <!-- Update this! -->
+                </jdbc>
+                <generator>
+                    <database>
+                        <name>org.jooq.meta.postgres.PostgresDatabase</name>
+                        <inputSchema>public</inputSchema>
+                    </database>
+                    <target>
+                        <packageName>com.example.jooq.generated</packageName>
+                        <directory>target/generated-sources/jooq</directory>
+                    </target>
+                </generator>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+
+</project>
