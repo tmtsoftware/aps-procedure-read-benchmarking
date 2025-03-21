@@ -4,27 +4,44 @@ This is a MAVEN project
 
 ## Implementing the Table
 Run psql 
+
 psql -U postgres
+
 Can log in as postgres/postgres
-pgAdmin 4
-verified created peas database
-to work with peas database use “\c peas” at psql command line
+
+To work with peas database use “\c peas” at psql command line
+
 Create the ArchiveProcedureView table
+
 CREATE TABLE ArchiveProcedureView (
-archiveProcedureViewId SERIAL PRIMARY KEY,
-procedureId BIGINT NOT NULL,
-name VARCHAR(32) NOT NULL,
-datatype VARCHAR(100) NOT NULL, 
-dim1 INTEGER NOT NULL,
-dim2 INTEGER NOT NULL,
-ScalarDataString VARCHAR(100),
-EncodedArrayData VARCHAR(125000),
-Timestamp TIMESTAMP NOT NULL
+
+> archiveProcedureViewId SERIAL PRIMARY KEY,
+
+> procedureId BIGINT NOT NULL,
+
+> name VARCHAR(32) NOT NULL,
+
+> datatype VARCHAR(100) NOT NULL, 
+
+> dim1 INTEGER NOT NULL,
+
+> dim2 INTEGER NOT NULL,
+
+> ScalarDataString VARCHAR(100),
+
+> EncodedArrayData VARCHAR(125000),
+
+> Timestamp TIMESTAMP NOT NULL
+
 );
 
 ## Compile and Run
-Compiling the code
+
+### Compiling the code
+
 mvn clean compile
-Running the code
+
+### Running the code
+
 mvn exec:java -Dexec.mainClass="com.example.App"
 
